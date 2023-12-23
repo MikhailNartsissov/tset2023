@@ -1,0 +1,20 @@
+{% extends 'homeanimals/base.html' %}
+
+{% block title %}
+  Регистрация нового животного
+{% endblock %}
+
+{% block body %}
+  <a href="{% url 'homeanimals:animals_list' %}">Назад к списку животных
+  </a> | <a href="{% url 'homeanimals:animals_list' %}">Домой</a>
+<h1>Регистрация нового животного</h1>
+<div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">
+      Зарегистрировать
+    </button>
+  </form>
+</div>
+{% endblock %}

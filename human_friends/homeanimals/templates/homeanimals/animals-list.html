@@ -1,0 +1,30 @@
+{% extends 'homeanimals/base.html' %}
+
+{% block title %}
+  Реестр домашних животных
+{% endblock %}
+
+{% block body %}
+  <h1>Реестр животных</h1>
+  <br>
+  <h2>На данный момент у нас есть следующие животные:</h2>
+  {% if animals %}
+    <div>
+    {% for animal in animals %}
+      <div>
+        <p><a href="{% url 'homeanimals:animal_details' pk=animal.pk %}">Кличка животного: {{ animal.name }}</a></p>
+        <p>Порода животного: {{ animal.animal_breed.name }}</p>
+        <p>Класс животного: {{ animal.animal_class.name }}</p>
+        <p>Дата рождения животного: {{ animal.birth_date }}</p>
+      </div>
+    {% endfor %}
+    </div>
+  {% else %}
+    <h3>Пока животных нет</h3>
+  {% endif %}
+<div>
+  <a href="{% url 'homeanimals:animal_create' %}">
+    Зарегистрировать новое животное
+  </a>
+</div>
+{% endblock %}

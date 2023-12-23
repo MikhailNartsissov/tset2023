@@ -1,0 +1,20 @@
+{% extends 'homeanimals/base.html' %}
+
+{% block title %}
+  Обновить информацию о животном
+{% endblock %}
+
+{% block body %}
+  <a href="{% url 'homeanimals:animal_details' pk=object.pk %}">Назад к информации о животном № {{ object.pk }}
+  </a> | <a href="{% url 'homeanimals:animals_list' %}">Домой</a>
+<h1>Обновить информацию о животном № {{ object.pk }}</h1>
+<div>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">
+      Обновить
+    </button>
+  </form>
+</div>
+{% endblock %}

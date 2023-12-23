@@ -1,0 +1,39 @@
+{% extends 'homeanimals/base.html' %}
+
+{% block title %}
+  Животное №{{ animal.pk }}
+{% endblock %}
+
+{% block body %}
+  <a href="{% url 'homeanimals:animals_list' %}">Назад к списку животных
+  </a> | <a href="{% url 'homeanimals:animals_list' %}">Домой</a>
+  <h1>Животное <strong>{{ animal.name }}</strong></h1>
+    <div>
+      <div>Кличка животного: {{ animal.name }}</div>
+      <div>Порода животного: <em>{{ animal.animal_breed.name }}</em></div>
+      <div>Класс животного: {{ animal.animal_class.name }}</div>
+      <div>Дата рождения животного: {{ animal.birth_date }}</div>
+      <div>Понимает команды: </div>
+
+      {% for command in animal.commands.all %}
+      <div class="comment">
+          <strong>{{ command.name }}</strong>
+      </div>
+    {% empty %}
+        <p>Животное команд не понимает</p>
+    {% endfor %}
+    </div>
+
+  <div>
+    <a href="{% url 'homeanimals:animal_update' pk=animal.pk %}">
+      Обновить информацию о животном
+    </a>
+  </div>
+  <br>
+
+  <div>
+    <a href="{% url 'homeanimals:animal_delete' pk=animal.pk %}">
+      Удалить информацию о животном
+    </a>
+  </div>
+{% endblock body %}

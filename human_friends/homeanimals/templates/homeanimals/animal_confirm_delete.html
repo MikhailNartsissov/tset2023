@@ -1,0 +1,29 @@
+{% extends 'homeanimals/base.html' %}
+
+{% block title %}
+  Подтвердите удаление информации о животном № {{ object.pk }}
+{% endblock %}
+
+{% block body %}
+  <a href="{% url 'homeanimals:animals_list' %}">Назад к списку животных
+  </a> | <a href="{% url 'homeanimals:animals_list' %}">Домой</a>
+
+    <h1>Пожалуйста, подтвердите удаление информации о животном № {{ object.pk }}</h1>
+    <br>
+    <div>
+      <a href="{% url 'homeanimals:animal_details' pk=object.pk %}">
+        Назад к детальной информации о животном
+      </a>
+    </div>
+    <br>
+    <div>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">
+          Удалить
+        </button>
+      </form>
+
+    </div>
+{% endblock body %}

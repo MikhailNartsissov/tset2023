@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # custom apps
-    'human_friends.homeanimals.apps.HomeanimalsConfig',
+    'homeanimals.apps.HomeanimalsConfig',
 ]
 
 MIDDLEWARE = [
